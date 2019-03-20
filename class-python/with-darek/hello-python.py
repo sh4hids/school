@@ -128,3 +128,39 @@ while i <= 20:
     if i % 2 == 0:
         print(i)
     i += 1
+
+# functions
+def addNumbers(num1, num2):
+    sum = num1 + num2
+    return sum
+
+print("The sum is:", addNumbers(5,8))
+
+print('What is your name?')
+# name = sys.stdin.readline()
+
+# print("Hello", name)
+
+# strings
+
+long_strings = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+print(len(long_strings))
+
+print(long_strings[0:5])
+print(long_strings[-5:])
+print(long_strings[:-5])
+print(long_strings[:4] + " ipsum nulla.")
+
+formatter = "My {} is {}."
+
+print(formatter.format('name','Shahid'))
+
+name = "john"
+
+print(name.capitalize())
+
+fruits = 'Apple, Banana, Mango'
+
+fruits_list = fruits.split(', ')
+print(fruits_list)
