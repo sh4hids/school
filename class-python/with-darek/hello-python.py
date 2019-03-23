@@ -164,3 +164,123 @@ fruits = 'Apple, Banana, Mango'
 
 fruits_list = fruits.split(', ')
 print(fruits_list)
+
+# file
+
+test_file = open("test.txt", "wb")
+print(test_file.mode)
+print(test_file.name)
+
+test_file.write(bytes("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n", 'UTF-8'))
+
+print(test_file.mode)
+
+test_file.close()
+
+test_file = open('test.txt', 'r+')
+text_in_file = test_file.read()
+
+print(text_in_file)
+
+os.remove('test.txt')
+
+# objects
+
+class Animal(object):
+    __name = ""
+    __height = 0
+    __weight = 0
+    __sound = ""
+
+    def __init__(self, name, height, weight, sound):
+        self.__name = name
+        self.__height = height
+        self.__weight = weight
+        self.__sound = sound
+
+    def set_name(self, name):
+        self.__name = name
+
+    def get_name(self):
+        return self.__name
+
+    def set_height(self, height):
+        self.__height = height
+
+    def get_height(self):
+        return self.__height
+
+    def set_weight(self, weight):
+        self.__weight = weight
+
+    def get_weight(self):
+        return self.__weight
+
+    def set_sound(self, sound):
+        self.__sound = sound
+
+    def get_sound(self):
+        return self.__sound
+
+    def get_type(self):
+        print("Animal")
+
+    def toString(self):
+        return "{} is {} cm tall and {} kilograms and say {}.".format(self.__name,
+                    self.__height,
+                    self.__weight,
+                    self.__sound)
+
+cat = Animal('Tom', 35, 10, 'Meawo')
+
+print(cat.get_name())
+print(cat.toString())
+
+# inheritance
+
+class Dog(Animal):
+    __owner = ""
+
+    def __init__(self, name, height, weight, sound, owner):
+        self.__owner = owner
+        super(Dog, self).__init__(name, height, weight, sound)
+
+    def set_owner(self, owner):
+        self.__owner = owner
+
+    def get_owner(self):
+        return self.__owner
+
+    def get_type(self):
+        print("Dog")
+
+
+    def multiple_sounds(self, sound_times=None):
+        if sound_times is None:
+            print(self.get_sound())
+        else:
+            print(self.get_sound() * sound_times)
+
+    def toString(self):
+        return "{} is {} cm tall and {} kilograms and say {}. His owner is {}.".format(self.get_name(),
+                    self.get_height(),
+                    self.get_weight(),
+                    self.get_sound(),
+                    self.__owner)
+
+spot = Dog("Spot", 55, 15, 'Ruff', 'Darek')
+
+print(spot.toString())
+
+# polimorphism
+
+class AnimalTesting:
+    def get_type(self, animal):
+        animal.get_type()
+
+test_animals = AnimalTesting()
+
+test_animals.get_type(cat)
+test_animals.get_type(spot)
+
+spot.multiple_sounds(4)
