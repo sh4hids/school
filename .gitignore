@@ -81,3 +81,5 @@ typings/
 
 # Next.js files
 **/*.next
+
+*.class
