@@ -1,0 +1,1 @@
+Yahoo! I can read data from file in Python 3.8
