@@ -59,3 +59,8 @@ man_1 = Manager('James', 'Bond', 1000,  [dev_1])
 man_1.list_employee()
 man_1.add_employee(dev_2)
 man_1.list_employee()
+
+print(isinstance(dev_1, Employee))
+print(isinstance(dev_1, Manager))
+print(issubclass(Developer, Manager))
+print(issubclass(Developer, Employee))
