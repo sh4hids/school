@@ -1,5 +1,5 @@
 class Employee:
-    
+
     raise_amt = 1.04
     initial_salary = 1000
 
