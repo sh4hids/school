@@ -64,3 +64,5 @@ print(isinstance(dev_1, Employee))
 print(isinstance(dev_1, Manager))
 print(issubclass(Developer, Manager))
 print(issubclass(Developer, Employee))
+
+
