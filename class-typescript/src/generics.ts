@@ -54,3 +54,52 @@ const pokemons: Pokemon[] = [
 ];
 
 console.log(ranker(pokemons, ({ hp }) => hp));
+
+function pluck<DataType, KeyType extends keyof DataType>(
+  items: DataType[],
+  key: KeyType
+): DataType[KeyType][] {
+  return items.map((item) => item[key]);
+}
+
+const cats = [
+  {
+    name: "Tom",
+    age: 50,
+  },
+  {
+    name: "Mii",
+    age: 10,
+  },
+];
+
+console.log(pluck(cats, "name"));
+
+interface BaseEvent {
+  time: number;
+  user: string;
+}
+
+interface EventMap {
+  addToCart: BaseEvent & { quantity: number; productId: string };
+  checkout: BaseEvent;
+}
+
+function sendEvent<Name extends keyof EventMap>(
+  name: Name,
+  data: EventMap[Name]
+): void {
+  console.log([name, data]);
+}
+
+sendEvent("addToCart", {
+  time: 345,
+  user: "john",
+  productId: "3sdsa",
+  quantity: 5,
+});
+
+sendEvent("checkout", {
+  time: 3345,
+  user: "gohn",
+});
