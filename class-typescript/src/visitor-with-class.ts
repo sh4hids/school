@@ -22,7 +22,7 @@ class VisitAllPages<DataType> {
 }
 
 const visitor = new VisitAllPages<Pokemon[]>(
-  "https://pokeapi.com/api/v2/pokemon/"
+  "https://pokeapi.co/api/v2/pokemon/"
 );
 
 visitor.visit((results) => {
