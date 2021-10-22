@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect, useRef } from "react";
 import "./App.css";
 
-import { useTodos } from "./useTodos";
+import { useTodos, useAddTodo, useRemoveTodo, TodosProvider } from "./useTodos";
 
 const Heading = ({ title }: { title: string }) => <h1>{title}</h1>;
 
@@ -75,6 +75,20 @@ function UnorderedList<T>({
   );
 }
 
+const Todos = () => {
+  const todos = useTodos();
+  return (
+    <div>
+      <Heading title="Todos" />
+      <UnorderedList
+        items={todos}
+        itemClick={(item) => alert(item.id)}
+        render={(todo) => <>{todo.text}</>}
+      />
+    </div>
+  );
+};
+
 function App() {
   const onItemClick = useCallback((item: string) => {
     alert(item);
@@ -90,13 +104,9 @@ function App() {
       });
   }, []);
 
-  const { todos, addTodo, removeTodo } = useTodos([
-    {
-      id: 0,
-      text: "First task",
-      isDone: false,
-    },
-  ]);
+  const todos = useTodos();
+  const addTodo = useAddTodo();
+  const removeTodo = useRemoveTodo();
 
   const newTodoRef = useRef<HTMLInputElement>(null);
   const handleAddTodo = useCallback(() => {
@@ -148,4 +158,26 @@ function App() {
   );
 }
 
-export default App;
+const AppWrapper: React.FC = () => (
+  <TodosProvider
+    initialTodos={[
+      {
+        id: 0,
+        text: "First task",
+        isDone: false,
+      },
+    ]}
+  >
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "50% 50%",
+      }}
+    >
+      <App />
+      <Todos />
+    </div>
+  </TodosProvider>
+);
+
+export default AppWrapper;
