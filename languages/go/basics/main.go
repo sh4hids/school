@@ -115,6 +115,8 @@ func learnTypes() {
 
 	z := learnNamedReturn(4, 6)
 	fmt.Println(z)
+
+	learnControlFlow()
 }
 
 func learnMemory() (p, q *int) {
@@ -134,4 +136,10 @@ func learnMemory() (p, q *int) {
 func learnNamedReturn(x, y int) (z int) {
 	z = x * y
 	return
+}
+
+func learnControlFlow() {
+	if true {
+		fmt.Println("Yes!")
+	}
 }
