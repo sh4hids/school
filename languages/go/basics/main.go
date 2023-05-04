@@ -116,7 +116,7 @@ func learnTypes() {
 	z := learnNamedReturn(4, 6)
 	fmt.Println(z)
 
-	learnControlFlow()
+	learnFlowControl()
 }
 
 func learnMemory() (p, q *int) {
@@ -138,8 +138,69 @@ func learnNamedReturn(x, y int) (z int) {
 	return
 }
 
-func learnControlFlow() {
+func learnFlowControl() {
 	if true {
 		fmt.Println("Yes!")
 	}
+
+	if false {
+		//Pout
+	} else {
+		//Gloat
+	}
+
+	x := 42.0
+
+	switch x {
+	case 0:
+	case 1, 2:
+	case 42:
+	case 43:
+	default:
+
+	}
+
+	var data interface{}
+	data = ""
+
+	switch c := data.(type) {
+	case string:
+		fmt.Println(c, "is a string")
+	case int64:
+		fmt.Printf("%d is an int64", c)
+	default:
+
+	}
+
+	for x := 0; x < 3; x++ {
+		fmt.Println("iteration", x)
+	}
+
+	for {
+		break
+		continue
+	}
+
+	for key, value := range map[string]int{"one": 1, "two": 2, "three": 3} {
+		fmt.Printf("key: %s, value: %d\n", key, value)
+	}
+
+	for _, value := range []string{"Abdullah", "Musab", "Muaz"} {
+		fmt.Printf("Hello, %s\n", value)
+	}
+
+	xBig := func() bool {
+		return x > 10000
+
+	}
+
+	x = 99999
+	fmt.Println("xBig:", xBig())
+
+	x = 1.3e3
+	fmt.Println("xBig:", xBig())
+
+	fmt.Println("Add + double two numbers:", func(a, b int) int {
+		return (a + b) * 2
+	}(4, 5))
 }
